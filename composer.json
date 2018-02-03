@@ -1,0 +1,27 @@
+{
+    "name": "blinktag/laravel-lazydev",
+    "description": "Finds TODO and FIXME annotations that past-you left in the code for future-you to deal with",
+    "type": "library",
+    "require": {
+        "php": "7.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mark Gregan",
+            "email": "mark@gregan.org"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+          "Blinktag\\": "src"
+        }
+      },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Blinktag\\Providers\\FindTodosServiceProvider"
+            ]
+        }
+    }
+}
