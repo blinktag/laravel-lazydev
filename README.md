@@ -9,7 +9,7 @@ Finds TODO and FIXME annotations that past-you left in the code for future-you t
 composer require-dev blinktag/laravel-lazydev:dev-master
 ```
 
-For laravel < 5.5:
+### Laravel < 5.5:
 
 ```
 'providers' => [
@@ -19,14 +19,38 @@ For laravel < 5.5:
     Blinktag\Providers\FindTodosServiceProvider::class,
 ],
 ```
+### Laravel >= 5.5
 
-Publish configuration, if you wish to change the strings it searches for
+The package will be autodiscovered
+
+### Configuration
+
+If you wish to change the strings this tool searches for, publish the configuration and then edit the value of `find_strings` in `config/findtodos.php`. Each term should be separated by a pipe character
 
 ```
 php artisan vendor:publish --tag=findtodos
 ```
 
 ## Usage
+
+Add comments in your code that begin with TODO, or FIXME, like so:
+
+```
+<?php
+
+...
+
+    public function calculateStore(int $total)
+    {
+    	...
+    	// TODO: This method is broken when the input is a negative value
+    	...
+    }
+...
+```
+
+You can then find these comments later on using the command
+
 ```
 php artistan find:todos
 ...

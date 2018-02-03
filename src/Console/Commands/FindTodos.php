@@ -119,8 +119,8 @@ class FindTodos extends Command
      */
     public function findTodos(array $token): array
     {
-        config('findtodos.find_strings', 'TODO|FIXME');
-        $regexp = '/(\/\/|\* )\s+?(?<prefix>TODO|FIXME):\s+(?<comment>.+?)\n$/i';
+        $strings = config('findtodos.find_strings', 'TODO|FIXME');
+        $regexp = '/(\/\/|\* )\s+?(?<prefix>' . $strings . '):\s+(?<comment>.+?)\n$/i';
         preg_match($regexp, $token[1], $matches);
         return $matches;
     }
